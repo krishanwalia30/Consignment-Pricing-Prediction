@@ -5,3 +5,9 @@ data_ingestion:
   source_URL: https://github.com/krishanwalia30/UsefulDatasets/raw/main/ConsignmentPricing_dataset.zip
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
+
+data_validation:
+  root_dir: artifacts/data_validation
+  status_file: artifacts/data_validation/status.txt
+  data_path: artifacts/data_ingestion
+  required_files: ['SCMS_Delivery_History_Dataset.csv']
