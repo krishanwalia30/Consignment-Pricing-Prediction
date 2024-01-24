@@ -1,4 +1,4 @@
-from ConsignmentPricingPrediction.entity import DataIngestionConfig
+from ConsignmentPricingPrediction.entity import DataIngestionConfig, DataValidationConfig
 from ConsignmentPricingPrediction.utils.common import read_yaml, create_directories
 from ConsignmentPricingPrediction.constants import *
 
@@ -26,3 +26,15 @@ class ConfigurationManager:
         )
         return data_ingestion_config
         
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation 
+
+        create_directories([config.root_dir])
+        data_validation_config = DataValidationConfig(
+            root_dir = config.root_dir,
+            status_file = config.status_file,
+            data_path = config.data_path,
+            required_files = config.required_files
+        )
+
+        return data_validation_config
