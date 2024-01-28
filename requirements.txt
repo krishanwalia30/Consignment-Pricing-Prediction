@@ -9,4 +9,6 @@ pyYAML
 types-PyYAML
 streamlit
 dvc
--e .
+xgboost
+catboost
+# -e .
