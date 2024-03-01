@@ -14,7 +14,8 @@ data_validation:
 
 data_transformation:
   root_dir: artifacts/data_transformation
-  preprocessor_path: artifacts/data_transformation/preprocessor.pkl
   data_path: artifacts/data_ingestion
-  train_path: artifacts/data_transformation/train.csv
-  test_path: artifacts/data_transformation/test.csv
+  transform_function_path: artifacts/data_transformation/transform_function.pkl
+  feature_map_path: artifacts/data_transformation/feature_map.pkl
+  train_data_path: artifacts/data_transformation/train.csv
+  test_data_path: artifacts/data_transformation/test.csv
