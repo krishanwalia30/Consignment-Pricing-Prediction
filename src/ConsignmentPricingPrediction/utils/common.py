@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 from ensure import ensure_annotations
 from pathlib import Path
 from box import ConfigBox
@@ -131,3 +133,24 @@ def evaluate_models(x_train, y_train,x_test, y_test, models, param):
     except Exception as e:
         Logger.exception(e)
         raise e
+    
+
+def encode_dataset(feature_map, cat_col, testDF: pd.DataFrame):
+        """"
+        Encode a Dataset based on the given feature map on the respective cat_col 
+
+        Args:
+            feature_map: dict
+            cat_col: list
+            testDF: pd.DataFrame
+        """
+        for i in cat_col:
+            mapping = {}
+
+            for j in feature_map[i]:
+                index = np.where(feature_map[i] == j)[0][0]
+                mapping[j] = index
+                
+            testDF[i] = testDF[i].map(mapping)
+
+        return testDF
