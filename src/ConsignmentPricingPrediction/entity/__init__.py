@@ -14,3 +14,13 @@ class DataValidationConfig:
     status_file: Path
     data_path: Path
     required_files: list
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+  root_dir: Path
+  data_path: Path
+  transform_function_path: Path
+  feature_map_path: Path
+  train_data_path: Path
+  test_data_path: Path
+  feature_columns : list

@@ -1,4 +1,4 @@
-from ConsignmentPricingPrediction.entity import DataIngestionConfig, DataValidationConfig
+from ConsignmentPricingPrediction.entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig
 from ConsignmentPricingPrediction.utils.common import read_yaml, create_directories
 from ConsignmentPricingPrediction.constants import *
 
@@ -38,3 +38,21 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+
+    def get_data_transformation_config(self)->DataTransformationConfig:
+        config = self.config.data_transformation 
+        params = self.params
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir= config.root_dir,
+            data_path= config.data_path,
+            transform_function_path= config.transform_function_path,
+            feature_map_path= config.feature_map_path,
+            train_data_path= config.train_data_path,
+            test_data_path= config.test_data_path,
+            feature_columns= params.FEATURE_COLUMNS
+        )
+
+        return data_transformation_config
