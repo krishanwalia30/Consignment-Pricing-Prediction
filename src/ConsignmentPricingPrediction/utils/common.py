@@ -144,13 +144,18 @@ def encode_dataset(feature_map, cat_col, testDF: pd.DataFrame):
             cat_col: list
             testDF: pd.DataFrame
         """
-        for i in cat_col:
-            mapping = {}
+        try:
+            for i in cat_col:
+                mapping = {}
 
-            for j in feature_map[i]:
-                index = np.where(feature_map[i] == j)[0][0]
-                mapping[j] = index
-                
-            testDF[i] = testDF[i].map(mapping)
+                for j in feature_map[i]:
+                    index = np.where(feature_map[i] == j)[0][0]
+                    mapping[j] = index
+                    
+                testDF[i] = testDF[i].map(mapping)
 
-        return testDF
+            return testDF
+        
+        except Exception as e:
+            Logger.exception(e)
+            raise e
