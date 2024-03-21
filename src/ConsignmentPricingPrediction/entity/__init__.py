@@ -24,3 +24,11 @@ class DataTransformationConfig:
   train_data_path: Path
   test_data_path: Path
   feature_columns : list
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path 
+    train_data_path: Path
+    model_path: Path
+    scaler_path: Path
+    target_column: str

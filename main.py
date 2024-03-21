@@ -2,6 +2,7 @@ from ConsignmentPricingPrediction.logging import Logger
 from ConsignmentPricingPrediction.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from ConsignmentPricingPrediction.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from ConsignmentPricingPrediction.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
+from ConsignmentPricingPrediction.pipeline.stage_04_model_trainer import ModelTrainerTrainingPipeline
 
 #################################
 
@@ -34,6 +35,18 @@ try:
     Logger.info(f">>>>>>>>>>>> Stage: {STAGE_NAME} | Initiated <<<<<<<<<<<<")
     data_transformation = DataTransformationTrainingPipeline()
     data_transformation.main()
+    Logger.info(f">>>>>>>>>>>> Stage: {STAGE_NAME} | Completed <<<<<<<<<<<<\n")
+except Exception as e:
+    Logger.exception(e)
+    raise e
+
+#################################
+
+STAGE_NAME = "Model Training"
+try:
+    Logger.info(f">>>>>>>>>>>> Stage: {STAGE_NAME} | Initiated <<<<<<<<<<<<")
+    model_trainer = ModelTrainerTrainingPipeline()
+    model_trainer.main()
     Logger.info(f">>>>>>>>>>>> Stage: {STAGE_NAME} | Completed <<<<<<<<<<<<\n")
 except Exception as e:
     Logger.exception(e)
