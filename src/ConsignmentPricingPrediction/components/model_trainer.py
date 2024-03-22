@@ -8,6 +8,7 @@ from ConsignmentPricingPrediction.entity import ModelTrainerConfig
 from ConsignmentPricingPrediction.utils.common import save_object
 from sklearn.metrics import r2_score
 from ConsignmentPricingPrediction.logging import Logger
+from catboost import CatBoostRegressor
 
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig):
@@ -61,8 +62,7 @@ class ModelTrainer:
             'LinearRegression': LinearRegression(),
             'Lasso': Lasso(),
             'Ridge': Ridge(),
-            'DecisionTree': DecisionTreeRegressor(),
-            'RandomForest': RandomForestRegressor(),
+            'CatBoost': CatBoostRegressor(iterations=2500, verbose=False)
         }
 
         model_accuracy_dict = {}
