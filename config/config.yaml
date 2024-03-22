@@ -26,3 +26,9 @@ model_trainer:
   model_path: artifacts/model_trainer/model.pkl
   scaler_path: artifacts/model_trainer/scaler.pkl
 
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_transformation/test.csv
+  model_path: artifacts/model_trainer/model.pkl
+  scaler_path: artifacts/model_trainer/scaler.pkl
+  metrics_file_path: artifacts/model_evaluation/metrics.yaml
